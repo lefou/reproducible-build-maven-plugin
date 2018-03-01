@@ -88,6 +88,7 @@
     <maven-plugin-annotations.version>3.5.1</maven-plugin-annotations.version>
     <maven-plugin-api.version>3.5.2</maven-plugin-api.version>
     <plexus-utils.version>3.1.0</plexus-utils.version>
+    <lambdatest.version>0.3.1</lambdatest.version>
     
   </properties>
 
@@ -136,6 +137,13 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.tototec</groupId>
+      <artifactId>de.tobiasroeser.lambdatest</artifactId>
+      <version>0.3.1</version>
       <scope>test</scope>
     </dependency>
     

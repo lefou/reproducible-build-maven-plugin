@@ -22,6 +22,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.tobiasroeser.lambdatest.Expect;
+
 /**
  * Unit tests for {@link ManifestStripper}.
  */
@@ -42,7 +44,7 @@ public class ManifestStripperTest
         final List<String> expected = Files.readAllLines(new File(
                                     this.getClass().getResource("MANIFEST-stripped.MF").getFile()).toPath());
         final List<String> actual = Files.readAllLines(out.toPath());
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Expect.expectEquals(actual, expected);
         out.delete();
     }
 }
