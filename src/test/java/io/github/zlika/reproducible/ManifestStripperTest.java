@@ -17,6 +17,7 @@ package io.github.zlika.reproducible;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -38,10 +39,10 @@ public class ManifestStripperTest
         
         new ManifestStripper().strip(new File(this.getClass().getResource("MANIFEST.MF").getFile()), out);
         
-        final byte[] expected = Files.readAllBytes(new File(
+        final List<String> expected = Files.readAllLines(new File(
                                     this.getClass().getResource("MANIFEST-stripped.MF").getFile()).toPath());
-        final byte[] actual = Files.readAllBytes(out.toPath());
-        Assert.assertArrayEquals(expected, actual);
+        final List<String> actual = Files.readAllLines(out.toPath());
+        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
         out.delete();
     }
 }

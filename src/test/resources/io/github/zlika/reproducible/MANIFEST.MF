@@ -5,3 +5,12 @@ Multiline-Entry: blabla, blablo,
  blibli, blublu
 Created-By: Apache Maven 3.3.3
 Build-Jdk: 1.8.0_51
+
+Name: foo/bar/b
+Sealed: false
+
+Name: foo/bar/a
+Sealed: false
+
+Name: foo/bar/baz/
+Sealed: true
