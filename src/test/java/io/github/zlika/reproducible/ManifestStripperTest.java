@@ -16,10 +16,13 @@ package io.github.zlika.reproducible;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import de.tobiasroeser.lambdatest.Expect;
 
 /**
  * Unit tests for {@link ManifestStripper}.
@@ -41,7 +44,10 @@ public class ManifestStripperTest
         final byte[] expected = Files.readAllBytes(new File(
                                     this.getClass().getResource("MANIFEST-stripped.MF").getFile()).toPath());
         final byte[] actual = Files.readAllBytes(out.toPath());
-        Assert.assertArrayEquals(expected, actual);
+		Expect.expectEquals(
+				new String(actual, 0, actual.length, Charset.forName("UTF-8")),
+				new String(expected, 0, expected.length, Charset.forName("UTF-8")));
+		Assert.assertArrayEquals(expected, actual);
         out.delete();
     }
 }
